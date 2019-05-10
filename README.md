@@ -44,10 +44,11 @@ $ cat *_16S.fasta >16S.fna
 ```bash
 $ cat *_ITS1.fasta >ITS.fna
 ```
-* Load QII
+* Load QIIME 
 ```bash
+$ source activate qiime1
 $ qsub -cwd qiime_workflow.sh
-```ME (source activate qiime1)
+```
 
 * Alignment (BLAST; parallel_pick_otus_blast.py): -b,  to assign database to blast against; -O modify number of jobs to start according to the number of available CPU (do not take all available CPU here); The output consists of two files (i.e. seqs_otus.txt and seqs_otus.log)
 * Generate OTU table (make_otu_table.py; tabulates the number of times an OTU is found in each sample, and adds the taxonomic predictions for each OTU in the last column if a taxonomy file is supplied "-t /home/genomics/genomics/reference/Microbiome/$2.fasta.taxonomy"; output is a biom format) (Deliverable #1)
