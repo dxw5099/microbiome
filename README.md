@@ -73,4 +73,5 @@ Deliverables:
 QC to check:
 
 % mapped reads: >70% (16S) and >60% (ITS)
+
 Recommend >5000 aligned reads per sample
