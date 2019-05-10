@@ -3,8 +3,12 @@
 Analysis for ITS and 16S needed to be completed seperately 
 
 Pipeline:
+
+```bash
 qsub -q all.q -cwd microbiome_process_16S.sh Sample1
 qsub -q all.q -cwd microbiome_process_ITS.sh Sample1
+```
+
 Step 1:  Trim adapter with cutadapt
 
 Screen out reads that do not begin with primer sequence and remove primer sequence from reads 
@@ -40,8 +44,12 @@ $ cat *_16S.fasta >16S.fna
 ```bash
 $ cat *_ITS1.fasta >ITS.fna
 ```
-* Load QIIME (source activate qiime1)
-* Alignment (BLAST; parallel_pick_otus_blast.py): -b,  to assign database to blast against; -O modify number of jobs to start according to the number of available CPU (do not take all available CPU here); 
+* Load QII
+```bash
+$ qsub -cwd qiime_workflow.sh
+```ME (source activate qiime1)
+
+* Alignment (BLAST; parallel_pick_otus_blast.py): -b,  to assign database to blast against; -O modify number of jobs to start according to the number of available CPU (do not take all available CPU here); The output consists of two files (i.e. seqs_otus.txt and seqs_otus.log)
 * Generate OTU table (make_otu_table.py; tabulates the number of times an OTU is found in each sample, and adds the taxonomic predictions for each OTU in the last column if a taxonomy file is supplied "-t /home/genomics/genomics/reference/Microbiome/$2.fasta.taxonomy"; output is a biom format) (Deliverable #1)
 * Convert biom to txt format (Deliverable #2)
 * Count the number of aligned reads per sample (biom summarize-table )
