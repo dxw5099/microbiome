@@ -3,7 +3,8 @@
 Analysis for ITS and 16S needed to be completed seperately 
 
 Pipeline:
-
+qsub -q all.q -cwd microbiome_process_16S.sh Sample1
+qsub -q all.q -cwd microbiome_process_ITS.sh Sample1
 Step 1:  Trim adapter with cutadapt
 
 Screen out reads that do not begin with primer sequence and remove primer sequence from reads 
@@ -12,7 +13,7 @@ Screen out reads that do not begin with primer sequence and remove primer sequen
 * R2 start with Reverse primer and end with complementary Forward primer
 * Linked adapters trimming was used here to discard reads without containing both primers (—discard-untrimmed) 
 * Trimmed reads are written to the output files by the -o and -p (for paired-end reads, the second read in a pair is always written to the file specified by -p)
-* One line for one sample 
+* One command line for one sample (qsub -q all.q -cwd microbiome_process_16S.sh Sample1)
 * Get log file for each sample
 
 
@@ -23,17 +24,23 @@ If similarity is <90%, then both reads were screened out. ??
 If overlapping region is <50bp or not overlap at all, R1 will be output as -1 $1.16S_unassembled_R1.fastq.gz and R2 will be output as -2 $1.16S_unassembled_R2.fastq.gz. Then only $1.16S_unassembled_R1.fastq.gz will be used for QIIME (R1 always shows better sequencing quality than R2). 
 
 
-Step 3: Check read length and format headline for QIIME
+Step 3: Check read length and modify format headline for QIIME
 * Merge joined.fastq.gz and unassembled_R1.fastq.gz
-* Modify headline (>SampleID_XXXXXXX)
+* Modify headline (>SampleID_XXXXXXX) ensure no "_" within SampleID
 * Discard reads if length < 100bp
 * Convert FASTQ to FASTA (QIIME1 prefers FASTA and QIIME2 prefers FASTQ)
 * Output file is $1_16S.fasta
 
 Step 4: QIIME
-* Merge all $1_16S.fasta files into one 16S file
+* Merge all $1_16S.fasta files into one 16S file 
+```bash
+$ cat *_16S.fasta >16S.fna
+```
 * Merge all $1_ITS.fasta files into one ITS file
-* Load QIIME by "source activate qiime1"
+```bash
+$ cat *_ITS1.fasta >ITS.fna
+```
+* Load QIIME (source activate qiime1)
 * Alignment (BLAST; parallel_pick_otus_blast.py): -b,  to assign database to blast against; -O modify number of jobs to start according to the number of available CPU (do not take all available CPU here); 
 * Generate OTU table (make_otu_table.py; tabulates the number of times an OTU is found in each sample, and adds the taxonomic predictions for each OTU in the last column if a taxonomy file is supplied "-t /home/genomics/genomics/reference/Microbiome/$2.fasta.taxonomy"; output is a biom format) (Deliverable #1)
 * Convert biom to txt format (Deliverable #2)
