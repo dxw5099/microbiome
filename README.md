@@ -3,8 +3,11 @@
 Analysis for ITS and 16S needed to be completed seperately 
 
 Pipeline:
+
 Step 1:  Trim adapter with cutadapt
+
 Screen out reads that do not begin with primer sequence and remove primer sequence from reads using 
+
 * R1 start with Forward primer and end with complementary Reverse primer
 * R2 start with Reverse primer and end with complementary Forward primer
 * Linked adapters trimming was used here to discard reads without containing both primers (—discard-untrimmed) 
