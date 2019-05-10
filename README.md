@@ -6,7 +6,7 @@ Pipeline:
 
 Step 1:  Trim adapter with cutadapt
 
-Screen out reads that do not begin with primer sequence and remove primer sequence from reads using 
+Screen out reads that do not begin with primer sequence and remove primer sequence from reads 
 
 * R1 start with Forward primer and end with complementary Reverse primer
 * R2 start with Reverse primer and end with complementary Forward primer
