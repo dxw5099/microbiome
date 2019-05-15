@@ -22,10 +22,10 @@ Screen out reads that do not begin with primer sequence and remove primer sequen
 
 
 Step 2: merge paired-end reads that are overlapping (>50bp) into a single longer reads. 
-When overlapped regions (>50bp) of two reads shows >90% similarity, we consider they are overlapped. Then performing merging and output the merged reads into  -s $1.16S_joined.fastq.gz.
--o <minimum overall base pair overlap to merge two reads; default = 15>  (15bp or 50bp)
-If similarity is <90%, then both reads were screened out. ??
-If overlapping region is <50bp or not overlap at all, R1 will be output as -1 $1.16S_unassembled_R1.fastq.gz and R2 will be output as -2 $1.16S_unassembled_R2.fastq.gz. Then only $1.16S_unassembled_R1.fastq.gz will be used for QIIME (R1 always shows better sequencing quality than R2). 
+When overlapped regions (>15bp) of two reads shows >90% similarity, we consider they are overlapped. Then performing merging and output the merged reads into  -s $1.16S_joined.fastq.gz.
+-o <minimum overall base pair overlap to merge two reads; default = 15>  
+If similarity is <90%, then both reads were screened out. 
+If overlapping region is <15bp or not overlap at all, R1 will be output as -1 $1.16S_unassembled_R1.fastq.gz and R2 will be output as -2 $1.16S_unassembled_R2.fastq.gz. Then only $1.16S_unassembled_R1.fastq.gz will be used for QIIME (R1 always shows better sequencing quality than R2). 
 
 
 Step 3: Check read length and modify format headline for QIIME
