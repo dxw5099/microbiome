@@ -52,6 +52,7 @@ $ source activate qiime1
 * Alignment (BLAST; parallel_pick_otus_blast.py): -b,  to assign database to blast against; -O modify number of jobs to start according to the number of available CPU (do not take all available CPU here); The output consists of two files (i.e. seqs_otus.txt and seqs_otus.log)
 ```bash
 $ qsub -N qiime -cwd qiime_workflow_16S_1.sh
+$ qsub -N qiime -cwd qiime_workflow_ITS1_1.sh
 ```
 
 * Generate OTU table (make_otu_table.py; tabulates the number of times an OTU is found in each sample, and adds the taxonomic predictions for each OTU in the last column if a taxonomy file is supplied "-t /home/genomics/genomics/reference/Microbiome/$2.fasta.taxonomy"; output is a biom format) (Deliverable #1)
@@ -59,6 +60,7 @@ $ qsub -N qiime -cwd qiime_workflow_16S_1.sh
 * Count the number of aligned reads per sample (biom summarize-table )
 ```bash
 $ qsub -hold_jid qiime -cwd qiime_workflow_16S_2.sh
+$ qsub -hold_jid qiime -cwd qiime_workflow_ITS1_2.sh
 ```
 
 References: /home/genomics/genomics/reference/Microbiome/  
