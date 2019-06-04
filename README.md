@@ -20,7 +20,6 @@ Screen out reads that do not begin with primer sequence and remove primer sequen
 * R2 start with Reverse primer and end with reverse complementary Forward primer
 * Linked adapters trimming was used here to discard reads without containing both primers (—discard-untrimmed) 
 * Trimmed reads are written to the output files by the -o and -p (for paired-end reads, the second read in a pair is always written to the file specified by -p)
-* One command line for one sample (qsub -q all.q -cwd microbiome_process_16S.sh Sample1)
 * Get log file for each sample
 
 
