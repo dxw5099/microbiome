@@ -9,7 +9,7 @@ $ source activate qiime1
 ```
 
 ```bash
-nohup bash /common/genomics-core/apps/microbiome/pipeline.sh > log.txt 2>&1&
+$ nohup bash /common/genomics-core/apps/microbiome/pipeline.sh > log.txt 2>&1&
 ```
 
 Step 1:  Trim adapter with cutadapt
