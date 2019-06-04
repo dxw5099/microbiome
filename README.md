@@ -1,6 +1,6 @@
-# microbiome
+# Microbiome
 
-Analysis for ITS and 16S needed to be completed seperately 
+Analysis for ITS and 16S needed to be completed seperately (Version2)
 
 Pipeline:
 
