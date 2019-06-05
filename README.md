@@ -72,10 +72,10 @@ Deliverables:
 * OTU table in both biom and txt formats 
 
 QC to check:  
-% mapped reads: >70% (16S) and >60% (ITS) 
+% mapped reads: >70% (16S) and >60% (ITS)   
 Recommend >5000 aligned reads per sample  
 
 ####Notes
-* QIIME v1 is more mature than QIIME v2 and QIIME v2 has problem of over clustering
-* Other tools to consider: DaDa, Mothur
-* To evaluate the new database, it is good to compare the mapping% (unique mapping)
+* QIIME v1 is more mature than QIIME v2 and QIIME v2 has problem of over clustering  
+* Other tools to consider: DaDa, Mothur  
+* To evaluate the new database, it is good to compare the mapping% (unique mapping)  
