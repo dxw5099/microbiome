@@ -7,7 +7,7 @@ https://www.nature.com/articles/s41579-018-0029-9
 
 Analysis for ITS1 and 16S (Version2)
 
-Pipeline:
+Pipeline running:
 
 ```bash
 $ source activate qiime1
